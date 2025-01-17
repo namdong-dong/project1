@@ -1,0 +1,21 @@
+package com.example.demo.controller;
+
+import java.util.Map;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.UserProfile;
+
+@RestController
+public class UserProfileController {
+	
+	private Map<String, UserProfile> userMap;
+	
+	@GetMapping("/user/{id}")
+	public UserProfile getUserProfile(@PathVariable("id") String id) {
+		return userMap.get(id);
+	}
+	
+}

@@ -1,0 +1,28 @@
+package com.example.demo;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
+@Mapper
+public interface UserProfileMapper {
+	@Select("SELECT * FROM UserProfile Where id=#{id}")
+	UserProfile getUserProfile(@Param("id") String id);
+	
+	@Select("SELECT * FROM UserProfile")
+	List<UserProfile> getUserProfileList();
+	
+	@Insert("INSERT INTO UserProfile VALUES(#{id}, #{name}, #{pw}, #{phone}, #{address}")
+	int postUserProfile(@Param("id") String id, @Param("name") String name, @Param("pw") String pw, @Param("phone") String phone, @Param("address") String address);
+	
+	@Update("UPDATE UserProfile SET name=#{name}, pw=#{pw}, phone=#{phone}, address=#{address} where id=#{id}")
+	int putUserProfile(@Param("id") String id, @Param("name") String name, @Param("pw") String pw, @Param("phone") String phone, @Param("address") String address);
+	
+	@Delete("DELETE from UserProfile where id=#{id}")
+	int deleteUserProfile(@Param("id") String id);
+}
