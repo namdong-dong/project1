@@ -5,13 +5,15 @@ public class UserProfile {
 	private String name;
 	private String phone;
 	private String address;
+	private String pw;
 	
-	public UserProfile(String id, String name, String phone, String address) {
+	public UserProfile(String id, String name, String phone, String address, String pw) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.phone = phone;
 		this.address = address;
+		this.pw = pw;
 	}
 
 	public String getId() {
@@ -28,6 +30,14 @@ public class UserProfile {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getPw() {
+		return pw;
+	}
+
+	public void setPw(String pw) {
+		this.pw = pw;
 	}
 
 	public String getPhone() {

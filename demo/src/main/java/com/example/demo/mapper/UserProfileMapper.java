@@ -19,12 +19,20 @@ public interface UserProfileMapper {
 	@Select("SELECT * FROM UserProfile")
 	List<UserProfile> getUserProfileList();
 	
-	@Insert("INSERT INTO UserProfile VALUES(#{id}, #{name}, #{phone}, #{address})")
-	int insertUserProfile(@Param("id") String id, @Param("name") String name, @Param("phone") String phone, @Param("address") String address);
+	@Insert("INSERT INTO UserProfile (id, pw, name, phone, address) VALUES(#{id}, #{pw}, #{name}, #{phone}, #{address})")
+	int insertUserProfile(@Param("id") String id, @Param("pw") String pw, @Param("name") String name, @Param("phone") String phone, @Param("address") String address);
 
 	@Update("UPDATE UserProfile SET name=#{name}, phone=#{phone}, address=#{address} WHERE id=#{id}")
-	int updateUserProfile(@Param("id") String id, @Param("name") String name, @Param("phone") String phone, @Param("address") String address);
+	int updateUserProfile(@Param("id") String id, @Param("pw") String pw, @Param("name") String name, @Param("phone") String phone, @Param("address") String address);
 
 	@Delete("DELETE FROM UserProfile WHERE id=#{id}")
 	int deleteUserProfile(@Param("id") String id);
+	
+	//중복확인하는 매퍼 + 로그인할때도 사용
+	@Select("SELECT COUNT(*) FROM UserProfile WHERE id = #{id}")
+	int countById(String id);
+
+	@Select("SELECT pw FROM UserProfile WHERE id = #{id}")
+	String getPasswordById(String id);
+ 
 }
