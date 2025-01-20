@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>회원정보수정</title>
+	</head>
+	<body>
+		<form id="modify_form">
+			　　ＩＤ <input type="text" id="id" name="id" placeholder="아이디" disabled><br>
+<!-- 			<input type="password" id="pw" name="pw" placeholder="비밀번호"><br> -->
+<!-- 			<input type="password" id="pwc" name="pwc" placeholder="비밀번호확인"><br> -->
+			　　이름 <input type="text" id="name" name="name" placeholder="이름"><br>
+			전화번호 <input type="text" id="phone" name="phone" placeholder="전화번호"><br>
+			　　주소 <input type="text" id="address" name="address" placeholder="주소"><br><br>
+			　　　　<button type="button" onclick="submitForm()">정보수정</button>
+			<button type="button" onclick="deleteForm()">탈퇴</button>
+		</form>
+	</body>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+	function parseJwt(token) {
+		const payload = token.split(".")[1]; // 페이로드 추출
+		const decodedPayload = atob(payload); // Base64 디코딩
+		return JSON.parse(decodedPayload); // JSON 파싱
+	}
+	const token = localStorage.getItem("token");
+	if (token) {
+		const userInfo = parseJwt(token);
+// 			console.log("로그인 정보:", userInfo);
+// 			console.log("아이디:", userInfo.sub);
+	}
+	fetch("/user/info", {
+		  method: "GET",
+		  headers: {
+		    Authorization: `Bearer ${token}`,
+		  },
+		})
+		  .then((response) => response.json())
+		  .then((data) => {
+			  const userID = parseJwt(token).sub
+			  const userName = data.name;
+			  const userPhone = data.phone;
+			  const userAddress = data.address;
+			  localStorage.setItem("userName", userName);
+				if (userName) {
+			        $("#id").val(userID);
+			        $("#name").val(userName);
+			        $("#phone").val(userPhone);
+			        $("#address").val(userAddress);
+			    }
+		  });
+	
+	function submitForm() {
+		const id = $("#id").val();
+// 		const pw = $("#pw");
+// 		const pwc = $("#pwc");
+		const name = $("#name");
+		const phone = $("#phone");
+		const address = $("#address");
+		const url = `/user/${id}`;
+		const formData = {
+			id: $("#id").val(),
+			name: $("#name").val(),
+			phone: $("#phone").val(),
+			address: $("#address").val()
+		};
+		
+		if (name.val() == null || name.val() =="") {
+			alert("이름을 입력해주세요");
+			$("#name").focus();
+			return false;
+		} else if (phone.val() == null || phone.val() =="") {
+			alert("전화번호를 입력해주세요");
+			$("#phone").focus();
+			return false;
+		} else if (address.val() == null || address.val() =="") {
+			alert("주소를 입력해주세요");
+			$("#address").focus();
+			return false;
+		} 
+
+		// AJAX 요청으로 REST Controller 호출
+		$.ajax({
+			url: url, // REST API URL
+			type: "PATCH",
+			contentType: "application/json",
+			data: JSON.stringify(formData),
+			success: function(response) {
+				alert("회원정보가 수정되었습니다.");
+				window.location.href = response.redirectUrl
+			},
+			error: function(xhr, status, error) {
+				alert("변경에 실패하였습니다: " + xhr.responseText);
+			}
+		});
+	}
+	
+	function deleteForm() {
+		const id = $("#id").val();
+		const url = `/user/${id}`;
+		if(confirm("정말 탈퇴하시겠습니까?")) {
+			$.ajax({
+				url: url, // REST API URL
+				type: "DELETE",
+				contentType: "application/json",
+// 				data: JSON.stringify({ id: id }),
+				success: function(response) {
+					alert("회원정보가 삭제되었습니다.");
+					localStorage.removeItem("token");
+				    sessionStorage.removeItem("token");
+					window.location.href = response.redirectUrl
+				},
+				error: function(xhr, status, error) {
+					alert("삭제에 실패하였습니다: " + xhr.responseText);
+				}
+			});
+		}
+	}
+	</script>
+</html>

@@ -2,9 +2,64 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>메인</title>
+		<style>
+			.hidden { display: none; }
+		</style>
 	</head>
 	<body>
-		<a href="/join">회원가입</a>
+		<a href="/auth/login" class="token_x">로그인</a>
+		<a href="/users/join" class="token_x">회원가입</a>
+		<div id="welcome-message" class="token_o"></div>
+		<a href="/users/modify" class="token_o">정보수정</a>
+		<a href="javascript:logout()" class="token_o">로그아웃</a>
 	</body>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		function parseJwt(token) {
+			const payload = token.split(".")[1]; // 페이로드 추출
+			const decodedPayload = atob(payload); // Base64 디코딩
+			return JSON.parse(decodedPayload); // JSON 파싱
+		}
+		const token = localStorage.getItem("token");
+		if (token) {
+			const userInfo = parseJwt(token);
+// 			console.log("로그인 정보:", userInfo);
+		}
+		if(token) {
+		fetch("/user/info", {
+		  method: "GET",
+		  headers: {
+		    Authorization: `Bearer ${token}`,
+		  },
+		})
+		  .then((response) => response.json())
+		  .then((data) => {
+			  const userName = data.name;
+			  localStorage.setItem("userName", userName);
+				if (userName) {
+			        $("#welcome-message").text(`${userName}님, 환영합니다!`);
+			    }
+		  });
+		}
+		
+		
+		if(token) {
+			$(".token_x").addClass("hidden");
+		} else {
+			$(".token_o").addClass("hidden");	
+		}
+		
+		function logout() {
+		    // 1. 로컬 스토리지에서 토큰 삭제
+		    localStorage.removeItem("token");
+
+		    // 2. 세션 스토리지에서도 삭제 (선택사항)
+		    sessionStorage.removeItem("token");
+
+		    // 3. 사용자에게 로그아웃 알림 후 리다이렉트
+		    alert("로그아웃 되었습니다.");
+		    window.location.href = "/";
+		}
+	</script>
 </html>

@@ -13,14 +13,19 @@ public class HomeController {
 		return "index.html";
 	}
 	
-	@GetMapping("/join")
+	@GetMapping("/users/join")
 	public String join() {
 		return "join.html";
 	}
 	
-	@GetMapping("/login")
+	@GetMapping("/auth/login")
 	public String login() {
 		return "login.html";
+	}
+	
+	@GetMapping("/users/modify")
+	public String modify() {
+		return "modify.html";
 	}
 	
 	

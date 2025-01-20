@@ -23,7 +23,7 @@ public interface UserProfileMapper {
 	int insertUserProfile(@Param("id") String id, @Param("pw") String pw, @Param("name") String name, @Param("phone") String phone, @Param("address") String address);
 
 	@Update("UPDATE UserProfile SET name=#{name}, phone=#{phone}, address=#{address} WHERE id=#{id}")
-	int updateUserProfile(@Param("id") String id, @Param("pw") String pw, @Param("name") String name, @Param("phone") String phone, @Param("address") String address);
+	int updateUserProfile(@Param("id") String id, @Param("name") String name, @Param("phone") String phone, @Param("address") String address);
 
 	@Delete("DELETE FROM UserProfile WHERE id=#{id}")
 	int deleteUserProfile(@Param("id") String id);
@@ -34,5 +34,8 @@ public interface UserProfileMapper {
 
 	@Select("SELECT pw FROM UserProfile WHERE id = #{id}")
 	String getPasswordById(String id);
+	
+	@Select("SELECT * FROM UserProfile WHERE id = #{id}")
+	UserProfile findById(String id);
  
 }
