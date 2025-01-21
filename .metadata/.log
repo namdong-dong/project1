@@ -2534,3 +2534,24 @@ java.lang.InterruptedException
 
 !ENTRY org.eclipse.lsp4e 4 0 2025-01-21 07:19:45.638
 !MESSAGE [Error]	Unexpected resource file:///C:/Users/deng/Documents/DEV/project1/demo/src/main/java/com/example/demo/controller/UserProfileController.java
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-01-21 08:09:27.608
+!MESSAGE [Info]	ESLint server running in node v22.11.0
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-01-21 08:09:27.738
+!MESSAGE [Info]	Using Typescript version (user-setting) 5.6.3 from path "D:\DEV\spring-tool-suite-4-4.27.0.RELEASE-e4.34.0-win32.win32.x86_64\sts-4.27.0.RELEASE\plugins\org.eclipse.wildwebdeveloper_1.2.4.202411181846\node_modules\typescript\lib\tsserver.js"
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-01-21 08:09:27.742
+!MESSAGE [Info]	Typescript Server version info: {version=5.6.3, source=user-setting}
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-01-21 08:09:27.743
+!MESSAGE [Error]	Unexpected resource file:///C:/Users/deng/Documents/DEV/project1/demo/src/main/java/com/example/demo/controller/UserProfileController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-01-21 08:09:27.747
+!MESSAGE [Error]	Unexpected resource file:///C:/Users/deng/Documents/DEV/project1/demo/src/main/java/com/example/demo/controller/UserProfileController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-01-21 08:09:27.752
+!MESSAGE [Error]	Unexpected resource file:///C:/Users/deng/Documents/DEV/project1/demo/src/main/java/com/example/demo/config/SecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-01-21 08:09:30.233
+!MESSAGE [Error]	Unexpected resource file:///C:/Users/deng/Documents/DEV/project1/demo/src/main/java/com/example/demo/config/SecurityConfig.java
