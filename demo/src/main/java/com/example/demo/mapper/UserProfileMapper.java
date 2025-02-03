@@ -19,11 +19,11 @@ public interface UserProfileMapper {
 	@Select("SELECT * FROM UserProfile")
 	List<UserProfile> getUserProfileList();
 	
-	@Insert("INSERT INTO UserProfile (id, pw, name, phone, address) VALUES(#{id}, #{pw}, #{name}, #{phone}, #{address})")
-	int insertUserProfile(@Param("id") String id, @Param("pw") String pw, @Param("name") String name, @Param("phone") String phone, @Param("address") String address);
+	@Insert("INSERT INTO UserProfile (id, pw, name, phone, address, email, phoneCompany) VALUES(#{id}, #{pw}, #{name}, #{phone}, #{address}, #{email}, #{phoneCompany})")
+	int insertUserProfile(@Param("id") String id, @Param("pw") String pw, @Param("name") String name, @Param("phone") String phone, @Param("address") String address, @Param("email") String email, @Param("phoneCompany") String phoneCompany);
 
-	@Update("UPDATE UserProfile SET name=#{name}, phone=#{phone}, address=#{address} WHERE id=#{id}")
-	int updateUserProfile(@Param("id") String id, @Param("name") String name, @Param("phone") String phone, @Param("address") String address);
+	@Update("UPDATE UserProfile SET name=#{name}, phone=#{phone}, address=#{address}, email=#{email}, phoneCompany=#{phoneCompany} WHERE id=#{id}")
+	int updateUserProfile(@Param("id") String id, @Param("name") String name, @Param("phone") String phone, @Param("address") String address, @Param("email") String email, @Param("phoneCompany") String phoneCompany);
 
 	@Delete("DELETE FROM UserProfile WHERE id=#{id}")
 	int deleteUserProfile(@Param("id") String id);

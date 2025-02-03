@@ -10,8 +10,15 @@
 <!-- 			<input type="password" id="pw" name="pw" placeholder="비밀번호"><br> -->
 <!-- 			<input type="password" id="pwc" name="pwc" placeholder="비밀번호확인"><br> -->
 			　　이름 <input type="text" id="name" name="name" placeholder="이름"><br>
-			전화번호 <input type="text" id="phone" name="phone" placeholder="전화번호"><br>
-			　　주소 <input type="text" id="address" name="address" placeholder="주소"><br><br>
+			전화번호 <input type="text" id="phone" name="phone" placeholder="전화번호">
+			<select id="phoneCompany" name="phoneCompany">
+				<option value="1">SKT</option>
+				<option value="2">KT</option>
+				<option value="3">LG U+</option>
+				<option value="4">알뜰폰</option>
+			</select><br>
+			　　주소 <input type="text" id="address" name="address" placeholder="주소"><br>
+			　이메일 <input type="text" id="email" name="email" placeholder="이메일주소" required><br><br>
 			　　　　<button type="button" onclick="submitForm()">정보수정</button>
 			<button type="button" onclick="deleteForm()">탈퇴</button>
 		</form>
@@ -41,12 +48,16 @@
 			  const userName = data.name;
 			  const userPhone = data.phone;
 			  const userAddress = data.address;
+			  const userPhoneCompany = data.phoneCompany;
+			  const userEmail = data.email;
 			  localStorage.setItem("userName", userName);
 				if (userName) {
 			        $("#id").val(userID);
 			        $("#name").val(userName);
 			        $("#phone").val(userPhone);
 			        $("#address").val(userAddress);
+			        $("#phoneCompany").val(userPhoneCompany);
+			        $("#email").val(userEmail);
 			    }
 		  });
 	
@@ -57,12 +68,15 @@
 		const name = $("#name");
 		const phone = $("#phone");
 		const address = $("#address");
+		const email = $("#email");
 		const url = `/user/${id}`;
 		const formData = {
 			id: $("#id").val(),
 			name: $("#name").val(),
 			phone: $("#phone").val(),
-			address: $("#address").val()
+			address: $("#address").val(),
+			phoneCompany: $("#phoneCompany").val(),
+			email: $("#email").val()
 		};
 		
 		if (name.val() == null || name.val() =="") {
@@ -76,6 +90,10 @@
 		} else if (address.val() == null || address.val() =="") {
 			alert("주소를 입력해주세요");
 			$("#address").focus();
+			return false;
+		} else if (email.val() == null || email.val() =="") {
+			alert("이메일을 입력해주세요");
+			$("#email").focus();
 			return false;
 		} 
 

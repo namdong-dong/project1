@@ -11,9 +11,16 @@
 			<button type="button" id="checkIdButton">중복확인</button> <span id="idCheckResult"></span> <br>
 			<input type="password" id="pw" name="pw" placeholder="비밀번호"><br>
 			<input type="password" id="pwc" name="pwc" placeholder="비밀번호확인"><br>
-			<input type="text" id="name" name="name" placeholder="이름">
-<!-- 			<input type="hidden" id="phone" name="phone" placeholder="전화번호"><br> -->
-<!-- 			<input type="hidden" id="address" name="address" placeholder="주소"><br> -->
+			<input type="text" id="name" name="name" placeholder="이름" required><br>
+			<input type="text" id="phone" name="phone" placeholder="전화번호" required>
+			<select id="phoneCompany" name="phoneCompany">
+				<option value="1">SKT</option>
+				<option value="2">KT</option>
+				<option value="3">LG U+</option>
+				<option value="4">알뜰폰</option>
+			</select><br>
+			<input type="text" id="address" name="address" placeholder="주소" required><br>
+			<input type="text" id="email" name="email" placeholder="이메일주소" required><br>
 			<button type="button" onclick="submitForm()">회원가입</button>
 		</form>
 	</body>
@@ -57,7 +64,9 @@
 				name: $("#name").val(),
 				pw: $("#pw").val(),
 				phone: $("#phone").val(),
-				address: $("address").val()
+				address: $("#address").val(),
+				phoneCompany: $("#phoneCompany").val(),
+				email: $("#email").val()
 			};
 			
 			if (id == null || id =="") {

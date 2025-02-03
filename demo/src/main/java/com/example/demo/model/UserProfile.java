@@ -6,14 +6,34 @@ public class UserProfile {
 	private String phone;
 	private String address;
 	private String pw;
+	private String phoneCompany;
+	private String email;
 	
-	public UserProfile(String id, String name, String phone, String address, String pw) {
+	public UserProfile(String id, String name, String phone, String address, String pw, String phoneCompany, String email) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.phone = phone;
 		this.address = address;
 		this.pw = pw;
+		this.phoneCompany = phoneCompany;
+		this.email = email;
+	}
+
+	public String getPhoneCompany() {
+		return phoneCompany;
+	}
+
+	public void setPhoneCompany(String phoneCompany) {
+		this.phoneCompany = phoneCompany;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getId() {

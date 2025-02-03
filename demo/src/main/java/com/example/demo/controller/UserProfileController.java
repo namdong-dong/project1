@@ -64,9 +64,12 @@ public class UserProfileController {
 		if (userProfile.getAddress() == null) {
 			userProfile.setAddress("");
 		}
+		if (userProfile.getEmail() == null) {
+			userProfile.setEmail("");
+		}
 		String hashedPassword = passwordEncoder.encode(userProfile.getPw());
 //		System.out.println("Hashed Password: " + hashedPassword);
-		mapper.insertUserProfile(userProfile.getId(), hashedPassword, userProfile.getName(), userProfile.getAddress(), userProfile.getPhone());
+		mapper.insertUserProfile(userProfile.getId(), hashedPassword, userProfile.getName(), userProfile.getPhone(), userProfile.getAddress(), userProfile.getEmail(), userProfile.getPhoneCompany());
 		response.put("redirectUrl", "/auth/login");
 		return ResponseEntity.ok(response);
 	}
@@ -77,7 +80,9 @@ public class UserProfileController {
 	    String name = updates.get("name");
 	    String phone = updates.get("phone");
 	    String address = updates.get("address");
-		mapper.updateUserProfile(id, name, phone, address);
+	    String email = updates.get("email");
+	    String phoneCompany = updates.get("phoneCompany");
+		mapper.updateUserProfile(id, name, phone, address, email, phoneCompany);
 		response.put("redirectUrl", "/");
 		return ResponseEntity.ok(response);
 	}

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,11 +55,12 @@ public class LoginController {
 			response.put("success", true);
 	        response.put("token", token);
 	        response.put("claim", claim);
+	        return ResponseEntity.status(HttpStatus.OK).body(response); // 로그인 성공 시 200 OK 반환
 		} else {
 			response.put("success", false);
 	        response.put("message", "잘못된 로그인 정보입니다");
+	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response); // 로그인 실패 시 401 Unauthorized 반환
         }
-		return ResponseEntity.ok(response);
 	}
 	
 	@PostMapping("/logout")
