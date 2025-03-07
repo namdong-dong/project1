@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="header">
+	<header>
+		<h1>고객 정보 관리</h1>
+		<nav>
+			<a href="/" th:href="@{/}">Home</a>
+			<a href="/list" th:href="@{/user/list}">List</a>
+			<a href="/about" th:href="@{/about}">About</a>
+		</nav>
+	</header>
+</div>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>회원 상세 정보</title>
+	<style>
+		body {
+			font-family: 'Arial', sans-serif;
+			background-color: #f4f4f9;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			width: 60%;
+			margin: 40px auto;
+			background: #ffffff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+		h1 {
+			text-align: center;
+			color: #333;
+			margin-bottom: 20px;
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			background: #ffffff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+		th, td {
+			padding: 12px;
+			border: 1px solid #ddd;
+			text-align: left;
+		}
+		th {
+			background-color: #666;
+			color: white;
+			width: 30%;
+		}
+		input, select {
+			width: 100%;
+			border: none;
+			background: none;
+			padding: 5px;
+			font-size: 16px;
+			color: #333;
+		}
+		input:disabled, select:disabled {
+			background: #f4f4f9;
+			color: #888;
+		}
+		.btn-container {
+			margin-top: 20px;
+			text-align: center;
+		}
+		button {
+			padding: 10px 15px;
+			margin: 5px;
+			border: none;
+			cursor: pointer;
+			border-radius: 5px;
+			font-size: 16px;
+		}
+		.edit-btn {
+			background-color: #666;
+			color: white;
+		}
+		.save-btn {
+			background-color: #444;
+			color: white;
+			display: none; /* 처음에는 숨김 */
+		}
+		.save-btn {
+			background-color: #444;
+			color: white;
+		}
+		.delete-btn {
+			background-color: #000;
+			color: white;
+		}
+		.cancel-btn {
+			background-color: #888;
+			color: white;
+			display: none; /* 처음에는 숨김 */
+		}
+		.back-btn {
+			background: #444;
+			color: white;
+			text-decoration: none;
+			display: inline-block;
+			padding: 10px;
+			border-radius: 5px;
+			margin-top: 20px;
+		}
+		td label {
+			display: inline-flex;
+			align-items: center;
+			margin-right: 15px; /* 라벨 간 간격 조절 */
+		}
+		
+		/* 라디오 버튼 크기 조절 */
+		input[type="radio"] {
+			width: 16px;
+			height: 16px;
+			margin-right: 5px; /* 라디오 버튼과 텍스트 사이 간격 조정 */
+		}
+		
+		/* 회색 효과 제거 */
+		input[type="radio"][disabled] {
+			opacity: 1;
+			cursor: not-allowed;
+		}
+		
+		input[disabled], select[disabled] {
+			background-color: transparent !important;  /* 배경색 제거 */
+			color: #333 !important;  /* 글자 색 유지 */
+			opacity: 1 !important;  /* 흐려지는 효과 제거 */
+			cursor: not-allowed;  /* 클릭 방지 */
+		}
+		
+		/* 문자 수신 동의와 이메일 수신 동의를 한 줄로 정렬 */
+		.radio-group {
+			display: flex;
+			gap: 20px; /* 간격 조정 */
+		}
+		/* 전화번호 입력란과 통신사 선택란을 한 줄 정렬 */
+		.phone-container {
+			display: flex;
+			align-items: center;
+			gap: 8px;  /* 통신사 선택과 전화번호 입력란 간격 조절 */
+		}
+		
+		/* 통신사 선택란 스타일 조정 */
+		.phone-container select {
+			width: auto;
+			min-width: 80px; /* 크기 조정 */
+		}
+		
+		/* 전화번호 입력란 크기 조정 */
+		.phone-container input[type="text"] {
+			flex: 1;
+		}
+		.address-container {
+			display: flex;
+			align-items: center;
+			gap: 8px;  /* 통신사 선택과 전화번호 입력란 간격 조절 */
+		}
+		
+		.address-container-zip {
+			width: auto;
+			min-width: 100px; /* 크기 조정 */
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>회원 상세 정보</h1>
+		<form id="userForm">
+			<table>
+				<tr>
+					<th>이름</th>
+					<td><input type="text" name="name" th:value="${user.name}" disabled></td>
+				</tr>
+				<tr>
+					<th>성별</th>
+					<td>
+						<select name="gender" disabled>
+							<option value="M" th:selected="${user.gender == 'M'}">남성</option>
+							<option value="F" th:selected="${user.gender == 'F'}">여성</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>생년월일</th>
+					<td><input type="date" id="birthday" name="birthday" th:value="${user.birthday}" max="9999-12-31" disabled></td>
+				</tr>
+				<tr>
+					<th>전화번호</th>
+					<td class="phone-container">
+						<select name="company" disabled>
+							<option value="1" th:selected="${user.phoneVO.company == '1'}">SKT</option>
+							<option value="2" th:selected="${user.phoneVO.company == '2'}">KT</option>
+							<option value="3" th:selected="${user.phoneVO.company == '3'}">LGU+</option>
+							<option value="4" th:selected="${user.phoneVO.company == '4'}">알뜰폰</option>
+						</select>
+						<input type="text" name="phoneNumber" th:value="${user.phoneVO != null ? user.phoneVO.phoneNumber : ''}" disabled>
+					</td>
+				</tr>
+				<tr>
+					<th>문자 수신 동의</th>
+						<td>
+							<label><input type="radio" name="phone_state" value="1" th:attr="checked=${user.phoneVO?.phoneState == '1'}" disabled> 동의 </label>
+							<label><input type="radio" name="phone_state" value="0" th:attr="checked=${user.phoneVO?.phoneState == '0'}" disabled> 거부 </label>
+						</td>
+				</tr>
+				<tr>
+					<th>이메일</th>
+					<td><input type="email" name="email" th:value="${user.emailVO != null ? user.emailVO.email : ''}" disabled required pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"></td>
+				</tr>
+				<tr>
+					<th>이메일 수신 동의</th>
+						<td>
+							<label><input type="radio" name="email_state" value="1" th:attr="checked=${user.emailVO?.emailState == '1'}" disabled> 동의 </label>
+							<label><input type="radio" name="email_state" value="0" th:attr="checked=${user.emailVO?.emailState == '0'}" disabled> 거부 </label>
+						</td>
+				</tr>
+				<tr>
+					<th>주소</th>
+					<td class="address-container">
+						<input type="text" name="zip" th:value="${user.addressVO.zip}" class="address-container-zip"  maxlength="12" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+						<input type="text" name="address" th:value="${user.addressVO.address}" class="address-container-main">
+					</td>
+				</tr>
+				<tr>
+					<th>회원 상태</th>
+					<td>
+						<select name="state" disabled>
+							<option value="Y" th:selected="${user.state == 'Y'}">활성</option>
+							<option value="N" th:selected="${user.state == 'N'}">비활성</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>가입 일자</th>
+					<td>
+						<input type="text" name="joinDate" th:value="${user.joinDate}" readonly>
+					</td>
+				</tr>
+				<tr>
+					<th>최근 접속 일자</th>
+					<td>
+						<input type="text" name="lastLogin" th:value="${user.lastLogin}" readonly>
+						<input type="hidden" name="userNo" th:value="${user.userNo}" readonly>
+						<input type="hidden" name="phoneNo" th:value="${user.phoneVO.phoneNo}" readonly>
+						<input type="hidden" name="emailNo" th:value="${user.emailVO.emailNo}" readonly>
+					</td>
+				</tr>
+			</table>
+			<div class="btn-container">
+				<button type="button" class="edit-btn">수정</button>
+				<button type="button" class="delete-btn">삭제</button>
+				<button type="button" class="save-btn">저장</button>
+				<button type="button" class="cancel-btn">취소</button>
+			</div>
+		</form>
+		<div style="text-align:center;">
+			<a href="/user/list" class="back-btn">목록으로 돌아가기</a>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+	$(document).ready(function () {
+		
+		let originalData = {}; // 원본 데이터를 저장할 객체
+
+		// 수정 버튼 클릭 시
+		$(".edit-btn").click(function () {
+		$("input, select").each(function () {
+			let name = $(this).attr("name");
+
+			if ($(this).attr("type") === "radio") {
+				if (!originalData[name]) {
+					originalData[name] = {};
+				}
+				if ($(this).is(":checked")) {
+					originalData[name].checkedValue = $(this).val();
+				}
+			} else {
+				originalData[name] = $(this).val();
+			}
+		});
+
+		$("input, select").prop("disabled", false);
+		$(".edit-btn, .delete-btn").hide();
+		$(".save-btn, .cancel-btn").show();
+	});
+
+		// 취소 버튼 클릭 시 (원본 데이터 복원)
+		$(".cancel-btn").click(function () {
+			$("input, select").each(function () {
+				let name = $(this).attr("name");
+				if ($(this).attr("type") === "radio") {
+					if (originalData[name] && originalData[name].checkedValue) {
+						$("input[name='" + name + "'][value='" + originalData[name].checkedValue + "']").prop("checked", true);
+					}
+				} else if ($(this).is("select")) {
+					$(this).val(originalData[name]).prop("selected", true); // select 값 복원
+				} else {
+					$(this).val(originalData[name]);
+				}
+			});
+
+			// 입력 필드 비활성화
+			$("input, select").prop("disabled", true);
+
+			// 버튼 전환
+			$(".save-btn, .cancel-btn").hide();  // 저장 / 취소 버튼 숨김
+			$(".edit-btn, .delete-btn").show();  // 수정 버튼 표시
+		});
+
+		// 저장 버튼 클릭 시 AJAX 요청
+		$(".save-btn").click(function () {
+			let name = $("input[name='name']");
+			let phoneNumber = $("input[name='phoneNumber']");
+			let email = $("input[name='email']");
+			let address = $("input[name='address']");
+			let zip = $("input[name='zip']");
+			
+			let phoneRegex = /^[0-9]+$/;  // 숫자만 허용
+			let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  // 기본 이메일 형식 검사
+			
+			if (!name || name.val() == "") {
+				alert("이름을 입력해주세요");
+				name.focus();
+				return false;
+			}
+			if (!phoneNumber || phoneNumber.val() == "") {
+				alert("전화번호를 입력해주세요");
+				phoneNumber.focus();
+				return false;
+			} else if (!phoneRegex.test(phoneNumber.val())) {
+				alert("전화번호는 숫자만 입력해야 합니다");
+				phoneNumber.focus();
+				return false;
+			}
+			if (!email || email.val() == "") {
+				alert("이메일을 입력해주세요")
+				email.focus();
+				return false;
+			} else if (!emailRegex.test(email.val())) {
+				alert("올바른 이메일 형식이 아닙니다");
+				email.focus();
+				return false;
+			}
+			if (!zip || zip.val() == "") {
+				alert("우편번호를 입력해주세요")
+				zip.focus();
+				return false;
+			}
+			if (!address || address.val() == "") {
+				alert("주소를 입력해주세요")
+				address.focus();
+				return false;
+			}
+			let userNo = $("input[name='userNo']").val()
+			let formData = {
+					userNo: $("input[name='userNo']").val(),
+					name: $("input[name='name']").val(),
+					gender: $("select[name='gender']").val(),
+					birthday: $("input[name='birthday']").val(),
+					phoneVO: {
+						phoneNo: $("input[name='phoneNo']").val(),
+						phoneNumber: $("input[name='phoneNumber']").val(),
+						company: $("select[name='company']").val(),
+						phoneState: $("input[name='phone_state']:checked").val(),  // 체크된 값 가져오기
+						userNo: $("input[name='userNo']").val()
+					},
+					emailVO: {
+						emailNo: $("input[name='emailNo']").val(),
+						email: $("input[name='email']").val(),
+						emailState: $("input[name='email_state']:checked").val(),
+						userNo: $("input[name='userNo']").val()
+					},
+					addressVO: {
+						addressNo: $("input[name='addressNo']").val(),
+						address: $("input[name='address']").val(),
+						zip: $("input[name='zip']").val(),
+						userNo: $("input[name='userNo']").val()
+					},
+					state: $("select[name='state']").val()
+				};
+
+			$.ajax({
+				url: "/api/user/"+ userNo,
+				type: "PUT",
+				contentType: "application/json",
+				dataType: "json",
+				data: JSON.stringify(formData),
+				success: function (response) {
+					alert("회원 정보가 저장되었습니다.");
+
+					// 입력 필드 비활성화
+					$("input, select").prop("disabled", true);
+
+					// 버튼 전환
+					$(".save-btn, .cancel-btn").hide();  // 저장 / 취소 버튼 숨김
+					$(".edit-btn, .delete-btn").show();  // 수정 버튼 다시 표시
+				},
+				error: function () {
+					alert("수정 중 오류 발생!");
+				}
+			});
+		});
+		
+		// 저장 버튼 클릭 시 AJAX 요청
+		$(".delete-btn").click(function () {
+			if (confirm("정말 삭제하시겠습니까?")){
+				let userNo = $("input[name='userNo']").val();
+				$.ajax({
+					url: "/api/user/"+userNo,
+					type: "DELETE",
+					success: function (response) {
+						alert("회원 정보가 삭제되었습니다.");
+						window.location.href = "list";
+						// 입력 필드 비활성화
+						$("input, select").prop("disabled", true);
+	
+						// 버튼 전환
+						$(".save-btn, .cancel-btn").hide();  // 저장 / 취소 버튼 숨김
+						$(".edit-btn").show();  // 수정 버튼 다시 표시
+					},
+					error: function () {
+						alert("저장 중 오류 발생!");
+					}
+				});
+			}
+		});
+	});
+	</script>
+</body>
+</html>

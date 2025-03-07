@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layout}">
+<head>
+	<title>Home Page</title>
+	
+	<!-- 페이지별 추가 CSS가 필요할 경우 여기에 작성 -->
+	<th:block layout:fragment="head-extra">
+		<style>
+			body {
+				font-family: 'Arial', sans-serif;
+				background-color: #f4f4f9;
+				margin: 0;
+				padding: 0;
+			}
+			h1 {
+				text-align: center;
+				color: #333;
+				margin-top: 20px;
+			}
+			#userList {
+				list-style-type: none;
+				padding: 0;
+				max-width: 600px;
+				margin: 20px auto;
+			}
+			#userList li {
+				background: #ffffff;
+				padding: 15px;
+				margin: 10px 0;
+				border-radius: 8px;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+				transition: background 0.2s;
+			}
+			#userList li:hover {
+				background: #e8f5ff;
+			}
+			table {
+				width: 80%;
+				margin: 0 auto;
+				border-collapse: collapse;
+				background: #ffffff;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+			th, td {
+				padding: 12px;
+				border: 1px solid #ddd;
+				text-align: center;
+			}
+			th {
+				background-color: #666;
+				color: white;
+			}
+			tr:hover {
+				background-color: #f1f1f1;
+			}
+			.btn-container {
+			margin-top: 20px;
+			text-align: center;
+		}
+		button {
+			padding: 10px 15px;
+			margin: 5px;
+			border: none;
+			cursor: pointer;
+			border-radius: 5px;
+			font-size: 16px;
+		}
+		.join-btn {
+			background-color: #666;
+			color: white;
+		}
+		.search-btn {
+			background-color: #666;
+			color: white;
+		}
+		.hidden {
+			display: none
+		}
+		.search-container {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end; /* 테이블과 같은 너비에서 오른쪽 정렬 */
+			width: 80%; /* 테이블과 같은 너비 적용 */
+			margin: 0 auto; /* 가운데 정렬 */
+			margin-bottom: 3px; /* 테이블과 간격 조정 */
+		}
+		#category {
+		  padding: 5px;
+		  font-size: 16px;
+		  width: 100px; /* 입력창 너비 */
+		}
+		#searchInput, #gender, #state {
+		  padding: 5px;
+		  font-size: 16px;
+		  width: 240px; /* 입력창 너비 */
+		}
+		.search-container select,
+		.search-container input,
+		.search-container button {
+			margin-left: 2px; /* 각 요소 간격 */
+		}
+		</style>  
+	</th:block>
+</head>
+<body>
+	<main layout:fragment="content">
+<!-- 		<h1>User List</h1> -->
+		<div class="search-container">
+			<select name="category" id="category">
+				<option value="u.name" selected>이름</option>
+				<option value="u.gender">성별</option>
+				<option value="p.phoneNumber">전화번호</option>
+				<option value="e.email">이메일</option>
+				<option value="u.state">회원상태</option>
+			</select>
+			<input type="text" id="searchInput" placeholder="검색어 입력">
+			<select name="gender" id="gender" class='hidden'>
+				<option value="M">남성</option>
+				<option value="F">여성</option>
+			</select>
+			<select name="state" id="state" class='hidden'>
+				<option value="Y">활성</option>
+				<option value="N">비활성</option>
+			</select>
+			<button class="search-btn">검색</button>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>이름</th>
+					<th>성별</th>
+					<th>전화번호</th>
+					<th>이메일</th>
+					<th>회원상태</th>
+				</tr>
+			</thead>
+			<tbody id="userTableBody">
+				<!-- JavaScript로 데이터 로드 -->
+			</tbody>
+		</table>
+		<div class="btn-container">
+				<button type="button" class="join-btn" onclick="location.href='join'">회원 등록</button>
+			</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			loadUserList();
+		});
+		
+		$("#category").change(function() {
+			let category = $(this).val();
+
+			// 모든 입력 필드 숨기기
+			$("#searchInput, #gender, #state").addClass("hidden");
+
+			// 선택된 값에 따라 해당 입력 필드만 보이기
+			if (category === "u.name" || category === "e.email" || category === "p.phoneNumber" ) {
+				$("#searchInput").removeClass("hidden");
+			} else if (category === "u.gender") {
+				$("#gender").removeClass("hidden");
+			} else if (category === "u.state") {
+				$("#state").removeClass("hidden");
+			}
+		});
+		
+		$(".search-btn").click(function() {
+			filterUsers();
+		});
+		
+		function loadUserList() {
+		// 페이지 로드 시 자동으로 유저 리스트 요청
+			$.getJSON("/api/user/list", function(data) {
+// 				console.log(data)
+				if (data.length === 0) {
+					$("#userTableBody").append("<tr><td colspan='5'>등록된 회원이 없습니다.</td></tr>");
+				} else {
+					data.forEach(user => {
+						let genderText = (user.gender === 'M') ? '남성' : (user.gender === 'F') ? '여성' : '성별정보없음';
+						let stateText = (user.state === 'Y') ? '활성' : (user.state === 'N') ? '비활성' : '오류';
+						$("#userTableBody").append(`
+							<tr data-userNo="${user.userNo}" class="userInfoSubmit" style="cursor:pointer;">
+								<td>${user.name}</td>
+								<td>${genderText}</td>
+								<td>${user.phoneVO ? user.phoneVO.phoneNumber : '핸드폰번호미입력'}</td>
+								<td>${user.emailVO ? user.emailVO.email : '이메일주소미입력'}</td>
+								<td>${stateText}</td>
+							</tr>
+						`);
+					});
+				}
+			}).fail(function() {
+				alert("유저 리스트를 불러오는 중 오류가 발생했습니다");
+			});
+		}
+		
+		
+		function submitUserInfo(userNo) {
+			let form = document.createElement("form");
+			form.method = "POST";
+			form.action = "/user/info";
+
+			let input = document.createElement("input");
+			input.type = "hidden";
+			input.name = "userNo";
+			input.value = userNo;
+			form.appendChild(input);
+			document.body.appendChild(form);
+			form.submit();
+		}
+		$(document).on("click", ".userInfoSubmit", function() {
+			let userNo = $(this).attr("data-userNo");  // data 속성에서 userNo 가져오기
+			submitUserInfo(userNo);
+		});
+		
+		function filterUsers() {
+			let category = $("#category").val();
+			let keyword = "";
+
+			if (category === "u.name" || category === "e.email" || category === "p.phoneNumber") {
+				keyword = $("#searchInput").val().trim();
+			} else if (category === "u.gender") {
+				keyword = $("#gender").val();
+			} else if (category === "u.state") {
+				keyword = $("#state").val();
+			}
+
+			// 검색어가 없으면 전체 리스트를 불러옴
+			if (keyword === "") {
+				$("#userTableBody").empty(); // 기존 리스트 초기화
+				loadUserList();
+				return;
+			}
+
+			$.getJSON(`/api/user/list?category=${category}&keyword=${keyword}`, function(data) {
+				$("#userTableBody").empty(); // 기존 리스트 초기화
+
+				if (data.length === 0) {
+					$("#userTableBody").append("<tr><td colspan='5'>검색 결과가 없습니다.</td></tr>");
+				} else {
+					data.forEach(user => {
+						let genderText = (user.gender === 'M') ? '남성' : (user.gender === 'F') ? '여성' : '성별정보없음';
+						let stateText = (user.state === 'Y') ? '활성' : (user.state === 'N') ? '비활성' : '오류';
+						$("#userTableBody").append(`
+							<tr data-userNo="${user.userNo}" class="userInfoSubmit" style="cursor:pointer;">
+								<td>${user.name}</td>
+								<td>${genderText}</td>
+								<td>${user.phoneVO ? user.phoneVO.phoneNumber : '핸드폰번호미입력'}</td>
+								<td>${user.emailVO ? user.emailVO.email : '이메일주소미입력'}</td>
+								<td>${stateText}</td>
+							</tr>
+						`);
+					});
+				}
+			}).fail(function() {
+				alert("검색 요청 중 오류가 발생했습니다.");
+			});
+		}
+	</script>
+	</main>
+</body>
+</html>

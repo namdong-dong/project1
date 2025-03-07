@@ -3,27 +3,39 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<section name="java.lang.Class">
 		<item key="replaceBarOpen" value="true"/>
-		<item key="selection" value="Response"/>
+		<item key="selection" value="userVO :"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="replacehistory">
+			<item value="&#x09;"/>
+			<item value="keyword"/>
+			<item value="category"/>
 			<item value="#"/>
+			<item value="userNo"/>
+			<item value="phoneNo"/>
+			<item value="addressNo"/>
+			<item value="emailNo"/>
+			<item value="int"/>
 		</list>
 		<list key="findhistory">
-			<item value="response"/>
-			<item value="respnse"/>
-			<item value="resp"/>
-			<item value="res"/>
-			<item value="***"/>
-			<item value="**"/>
-			<item value="#@!"/>
-			<item value="maven"/>
-			<item value="redirectUrlredirectUrl"/>
-			<item value="password"/>
+			<item value="category"/>
+			<item value="    "/>
+			<item value="searchvalue"/>
+			<item value="selectedvalue"/>
+			<item value="search"/>
+			<item value="전화번호는"/>
+			<item value="date"/>
+			<item value="BTN"/>
 			<item value="$"/>
+			<item value="setUserNO"/>
+			<item value="delete-btn"/>
+			<item value="e.state"/>
+			<item value="usern"/>
+			<item value="userNO"/>
+			<item value="userVO :"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

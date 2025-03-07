@@ -24,7 +24,7 @@ import com.example.demo.service.UserProfileService;
 import com.example.demo.util.JwtUtil;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/userC")
 public class UserProfileController {
 
 	private UserProfileMapper mapper;
