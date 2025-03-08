@@ -21,6 +21,7 @@
 			<item value="int"/>
 		</list>
 		<list key="findhistory">
+			<item value="hover"/>
 			<item value="category"/>
 			<item value="    "/>
 			<item value="searchvalue"/>
@@ -35,7 +36,6 @@
 			<item value="e.state"/>
 			<item value="usern"/>
 			<item value="userNO"/>
-			<item value="userVO :"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
