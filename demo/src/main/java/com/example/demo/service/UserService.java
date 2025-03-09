@@ -75,11 +75,20 @@ public class UserService {
 	@Transactional
 	public boolean deleteUserInfo(int userNo) {
 		UserVO userVO = mapper.getUserInfo(userNo);
-			if (userVO == null) {
-				return false; // 회원이 존재하지 않음
-			}
+		if (userVO == null) {
+			return false; // 회원이 존재하지 않음
+		}
 		int deleted = mapper.deleteUser(userNo);
 		return deleted > 0 ;
+	}
+	
+	public String hasImg(int userNo) {
+		UserVO userVO = mapper.getUserInfo(userNo);
+		if (userVO.getImg()!=null) {
+			return userVO.getImg();
+		} else {
+			return "";
+		}
 	}
 
 }

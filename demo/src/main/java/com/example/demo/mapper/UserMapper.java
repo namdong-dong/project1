@@ -9,17 +9,13 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.example.demo.model.UserProfile;
 import com.example.demo.vo.UserVO;
 
 @Mapper
 public interface UserMapper {
 	
 	
-	@Select("SELECT * FROM UserProfile WHERE id=#{id}")
-	UserProfile getUserProfile(@Param("id") String id);
-	
-	@Select("SELECT u.userNo, u.name, u.gender, u.birthday, u.joinDate, u.lastLogin, u.state, "
+	@Select("SELECT u.userNo, u.name, u.gender, u.birthday, u.joinDate, u.lastLogin, u.state, u.img, "
 			+ "p.phoneNo AS phoneNo, p.phoneNumber as phoneNumber, p.company as company, p.phoneState as phoneState, "
 			+ "e.emailNo AS emailNo, e.email as email, e.emailState as emailState, "
 			+ "a.addressNo AS adressNo, a.address as address, a.zip as zip " 
@@ -35,6 +31,7 @@ public interface UserMapper {
 			@Result(property = "joinDate", column = "joinDate"),
 			@Result(property = "lastLogin", column = "lastLogin"),
 			@Result(property = "state", column = "state"),
+			@Result(property = "img", column = "img"),
 			
 			// PhoneVO 매핑
 			@Result(property = "phoneVO.phoneNo", column = "phoneNo"),
@@ -82,7 +79,7 @@ public interface UserMapper {
 //	@Select("SELECT * FROM UserProfile WHERE id = #{id}")
 //	UserProfile findById(String id);
 
-	@Select("SELECT u.userNo, u.name, u.gender, u.birthday, u.joinDate, u.lastLogin, u.state, "
+	@Select("SELECT u.userNo, u.name, u.gender, u.birthday, u.joinDate, u.lastLogin, u.state, u.img, "
 			+ "p.phoneNo AS phoneNo, p.phoneNumber as phoneNumber, p.company as company, p.phoneState as phoneState, "
 			+ "e.emailNo AS emailNo, e.email as email, e.emailState as emailState, "
 			+ "a.addressNo AS addressNo, a.address as address, a.zip as zip "
@@ -99,6 +96,7 @@ public interface UserMapper {
 		@Result(column = "joinDate", property = "joinDate"),
 		@Result(column = "lastLogin", property = "lastLogin"),
 		@Result(column = "state", property = "state"),
+		@Result(property = "img", column = "img"),
 		// 📌 emailVO 매핑
 		@Result(column = "emailNo", property = "emailVO.emailNo"),
 		@Result(column = "email", property = "emailVO.email"),
@@ -115,7 +113,7 @@ public interface UserMapper {
 	})
 	UserVO getUserInfo(int userNo);
 
-	@Update("UPDATE user SET name = #{name}, gender = #{gender}, birthday = #{birthday}, state = #{state} WHERE userNo = #{userNo}")
+	@Update("UPDATE user SET name = #{name}, gender = #{gender}, birthday = #{birthday}, state = #{state}, img = #{img} WHERE userNo = #{userNo}")
 	void updateUser(UserVO userVO);
 
 	@Delete("DELETE FROM user WHERE userNo = #{userNo}")
