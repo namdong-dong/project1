@@ -84,7 +84,7 @@ public class UserController {
 
 				// 파일 확장자 검증
 				String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
-				List<String> allowedExtensions = Arrays.asList(".jpg", ".jpeg", ".png", ".gif");
+				List<String> allowedExtensions = Arrays.asList(".jpg", ".jpeg", ".png", ".gif", ".webp");
 				if (!allowedExtensions.contains(fileExtension.toLowerCase())) {
 					response.put("message", "허용되지 않은 파일 형식입니다.");
 					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
@@ -155,7 +155,7 @@ public class UserController {
 
 				// 파일 확장자 검증
 				String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
-				List<String> allowedExtensions = Arrays.asList(".jpg", ".jpeg", ".png", ".gif");
+				List<String> allowedExtensions = Arrays.asList(".jpg", ".jpeg", ".png", ".gif", ".webp");
 				if (!allowedExtensions.contains(fileExtension.toLowerCase())) {
 					response.put("message", "허용되지 않은 파일 형식입니다.");
 					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
