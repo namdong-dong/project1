@@ -29,7 +29,7 @@
 			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		}
 		th, td {
-			padding: 12px;
+			padding: 10px; /* 기존보다 padding 감소 */
 			border: 1px solid #ddd;
 			text-align: left;
 		}
@@ -74,53 +74,54 @@
 		td label {
 			display: inline-flex;
 			align-items: center;
-			margin-right: 15px; /* 라벨 간 간격 조절 */
+			margin-right: 15px;
 		}
 		
 		/* 라디오 버튼 크기 조절 */
 		input[type="radio"] {
 			width: 16px;
 			height: 16px;
-			margin-right: 5px; /* 라디오 버튼과 텍스트 사이 간격 조정 */
+			margin-right: 5px;
 		}
 		
-		/* 문자 수신 동의와 이메일 수신 동의를 한 줄로 정렬 */
-		.radio-group {
-			display: flex;
-			gap: 20px; /* 간격 조정 */
+		/* 프로필 사진 칸 조정 */
+		td[rowspan] {
+			text-align: center;
+			vertical-align: middle;
+			padding: 2px; /* padding 줄여서 이미지가 작아지는 문제 해결 */
 		}
-		/* 전화번호 입력란과 통신사 선택란을 한 줄 정렬 */
-		.phone-container {
-			display: flex;
+		td[rowspan] img {
+			width: 120px; 
+			height: 120px; 
+			border-radius: 10px; /* 둥글지만 사각형 느낌 */
+			object-fit: cover;
+			cursor: pointer;
+		}
+		
+		/* 전화번호 및 주소 입력란 정렬 */
+		.phone-container, .address-container {
+			white-space: nowrap;  /* ✅ 줄바꿈 방지 */
 			align-items: center;
-			gap: 8px;  /* 통신사 선택과 전화번호 입력란 간격 조절 */
+			gap: 8px;
+			width: 100%;
 		}
-		
-		/* 통신사 선택란 스타일 조정 */
-		.phone-container select {
+		.phone-container select{
 			width: auto;
-			min-width: 80px; /* 크기 조정 */
+			min-width: 80px;
 		}
-		
-		/* 전화번호 입력란 크기 조정 */
-		.phone-container input[type="text"] {
+		.address-container .input-address {
 			flex: 1;
 		}
-		.address-container {
-			display: flex;
-			align-items: center;
-			gap: 8px;  /* 통신사 선택과 전화번호 입력란 간격 조절 */
+		.phone-container input {
+    		width: calc(100% - 100px);  /* 전체 너비에서 select 크기 제외 후 자동 조정 */
 		}
 		
-		.address-container-zip {
-			width: auto;
-			min-width: 100px; /* 크기 조정 */
+		.input-zip {
+			width: 15%
 		}
-		
-		.phone-container-main {
-			flex: 1;
+		.input-address {
+			width: 80%
 		}
-		
 	</style>
 </head>
 <body>
@@ -131,6 +132,11 @@
 				<tr>
 					<th>이름</th>
 					<td><input type="text" name="name" placeholder="이름을 입력해주세요" required maxlength="15"></td>
+					<td rowspan="3">
+						<img id="profileImage" th:src="@{/img/user-default.png}" alt="프로필 사진"
+							 onclick="document.getElementById('fileInput').click()">
+						<input type="file" id="fileInput" style="display: none;" name="img" accept="image/*" onchange="previewImage(event)">
+					</td>
 				</tr>
 				<tr>
 					<th>성별</th>
@@ -147,7 +153,7 @@
 				</tr>
 				<tr>
 					<th>전화번호</th>
-					<td class="phone-container">
+					<td colspan="2" class="phone-container">
 						<select name="company">
 							<option value="1">SKT</option>
 							<option value="2">KT</option>
@@ -159,27 +165,27 @@
 				</tr>
 				<tr>
 					<th>문자 수신 동의</th>
-						<td>
-							<label><input type="radio" name="phoneState" value="1" checked> 동의 </label>
-							<label><input type="radio" name="phoneState" value="0"> 거부 </label>
-						</td>
+					<td colspan="2">
+						<label><input type="radio" name="phoneState" value="1" checked> 동의</label>
+						<label><input type="radio" name="phoneState" value="0"> 거부</label>
+					</td>
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td><input type="email" name="email" placeholder="example@example.com" required></td>
+					<td colspan="2"><input type="email" name="email" placeholder="example@example.com" required></td>
 				</tr>
 				<tr>
 					<th>이메일 수신 동의</th>
-						<td>
-							<label><input type="radio" name="emailState" value="1" checked> 동의 </label>
-							<label><input type="radio" name="emailState" value="0"> 거부 </label>
-						</td>
+					<td colspan="2">
+						<label><input type="radio" name="emailState" value="1" checked> 동의</label>
+						<label><input type="radio" name="emailState" value="0"> 거부</label>
+					</td>
 				</tr>
 				<tr>
 					<th>주소</th>
-					<td class="address-container">
-						<input type="text" name="zip" placeholder="우편번호"  class="address-container-zip" maxlength="12" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-						<input type="text" name="address" placeholder="주소를 입력해주세요" class="address-container-main" required>
+					<td colspan="2" class="address-container">
+						<input type="text" class="input-zip" name="zip" placeholder="우편번호" maxlength="12" required>
+						<input type="text" class="input-address" name="address" placeholder="주소를 입력해주세요" required>
 					</td>
 				</tr>
 			</table>
@@ -240,7 +246,8 @@
 				return false;
 			}
 			// 폼 데이터 수집
-			let formData = {
+			
+			let jsonData = {
 				name: $("input[name='name']").val(),
 				gender: $("select[name='gender']").val(),
 				birthday: $("input[name='birthday']").val(),
@@ -258,13 +265,22 @@
 				address: $("input[name='address']").val()
 				}
 			};
+			// FormData 생성
+	        let formData = new FormData();
+	        formData.append("userData", new Blob([JSON.stringify(jsonData)], { type: "application/json" })); // ✅ JSON 추가
 
+	        // 파일 추가 (선택된 경우)
+	        let file = $("#fileInput")[0].files[0];
+	        if (file) {
+	            formData.append("img", file);
+	        }
 			// JSON 방식으로 AJAX 요청
 			$.ajax({
 				url: "/api/user/join",
 				type: "POST",
-				contentType: "application/json",
-				data: JSON.stringify(formData),
+				data: formData,
+				contentType: false,  // FormData 사용 시 false 설정
+				processData: false,  // FormData 자동 변환 방지
 				success: function (response) {
 					alert(response.message); // 성공 메시지 출력
 					window.location.href = response.redirectUrl; // 목록 페이지로 이동
@@ -275,6 +291,15 @@
 			});
 		});
 	});
+	
+	function previewImage(event) {
+		let reader = new FileReader();
+		reader.onload = function () {
+			let imgElement = document.getElementById("profileImage");
+			imgElement.src = reader.result;
+		};
+		reader.readAsDataURL(event.target.files[0]);
+	}
 	</script>
 </body>
 </html>

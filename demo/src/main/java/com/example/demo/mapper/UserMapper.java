@@ -64,7 +64,7 @@ public interface UserMapper {
 //	@Insert("INSERT INTO user (name, gender, birthday, joinDate, lastLogin) VALUES(#{name}, #{gender}, #{birthday}, now(), now())")
 //	int insertNewUser(@Param("name") String name, @Param("gender") String gender, @Param("birthday") String birthday);
 	
-	@Insert("INSERT INTO user (name, gender, birthday, joinDate, lastLogin, phoneNo, emailNo, addressNo) VALUES(#{name}, #{gender}, #{birthday}, now(), now(), #{phoneVO.phoneNo}, #{emailVO.emailNo}, #{addressVO.addressNo})")
+	@Insert("INSERT INTO user (name, gender, birthday, joinDate, lastLogin, phoneNo, emailNo, addressNo, img) VALUES(#{name}, #{gender}, #{birthday}, now(), now(), #{phoneVO.phoneNo}, #{emailVO.emailNo}, #{addressVO.addressNo}, #{img})")
 	int registerUser(UserVO userVO);
 	
 //	@Update("UPDATE UserProfile SET name=#{name}, phone=#{phone}, address=#{address}, email=#{email}, phoneCompany=#{phoneCompany} WHERE id=#{id}")

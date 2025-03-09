@@ -12,10 +12,11 @@ public class UserVO {
 	private PhoneVO phoneVO;
 	private EmailVO emailVO;
 	private AddressVO addressVO;
+	private String img;
 
 	public UserVO(int userNo,
 			String name, String gender, String birthday,
-			String joinDate, String lastLogin, String state) {
+			String joinDate, String lastLogin, String state, String img) {
 		this.userNo = userNo;
 		this.name = name;
 		this.gender = gender;
@@ -23,6 +24,7 @@ public class UserVO {
 		this.joinDate = joinDate;
 		this.lastLogin = lastLogin;
 		this.state = state;
+		this.img = img;
 	}
 	
 	public void setUserNo(int userNo) {
@@ -119,6 +121,14 @@ public class UserVO {
 
 	public void setAddressVO(AddressVO addressVO) {
 		this.addressVO = addressVO;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 
