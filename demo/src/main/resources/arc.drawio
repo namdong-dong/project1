@@ -1,0 +1,119 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Whale/4.30.291.11 Safari/537.36" version="26.1.0">
+  <diagram name="페이지-1" id="HgZBQPQcbfUJXRRBHd9n">
+    <mxGraphModel dx="1886" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-27" value="" style="ellipse;whiteSpace=wrap;html=1;shadow=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="340" y="10" width="120" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-20" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=0.556;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;textShadow=1;shadow=1;" edge="1" parent="1" source="AO8RqB7qXllmJAtHtq3s-13">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="651" as="sourcePoint" />
+            <mxPoint x="440" y="801" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-1" value="&lt;div&gt;&lt;p data-end=&quot;516&quot; data-start=&quot;480&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p data-end=&quot;516&quot; data-start=&quot;480&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p data-end=&quot;516&quot; data-start=&quot;480&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;📂 &lt;strong data-end=&quot;514&quot; data-start=&quot;483&quot;&gt;com.example.demo.controller&lt;/strong&gt;&lt;/font&gt;&lt;/p&gt;&lt;p data-end=&quot;516&quot; data-start=&quot;480&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;HomeController.java :&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;메인 페이지 및 기타 정적 리소스 제공&lt;/span&gt;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;UserController.java :&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;사용자 등록, 수정, 삭제 등 HTTP 요청 처리&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="161" width="360" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-5" value="&lt;p data-end=&quot;952&quot; data-start=&quot;919&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p data-end=&quot;952&quot; data-start=&quot;919&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p data-end=&quot;952&quot; data-start=&quot;919&quot;&gt;📂 &lt;strong data-end=&quot;950&quot; data-start=&quot;922&quot;&gt;com.example.demo.service&lt;/strong&gt;&lt;/p&gt;&lt;code style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;973&quot; data-start=&quot;955&quot;&gt;UserService.java&lt;/code&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;사용자 정보의 등록, 수정, 삭제와 관련된 비즈니스 로직 담당&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Persistence Layer에 접근하여 데이터를 조회, 가공한 후 Controller에 전달&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="401" width="720" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-6" value="&lt;h2 data-end=&quot;1120&quot; data-start=&quot;1082&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px; font-weight: normal;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/h2&gt;&lt;h2 data-end=&quot;1120&quot; data-start=&quot;1082&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px; font-weight: normal;&quot;&gt;📂 &lt;/span&gt;&lt;strong style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px;&quot; data-end=&quot;1212&quot; data-start=&quot;1185&quot;&gt;com.example.demo.mapper&lt;/strong&gt;&lt;/h2&gt;&lt;code style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;1234&quot; data-start=&quot;1217&quot;&gt;UserMapper.java&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, &lt;/span&gt;&lt;code style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;1254&quot; data-start=&quot;1236&quot;&gt;PhoneMapper.java&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;,&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;code style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;1274&quot; data-start=&quot;1256&quot;&gt;EmailMapper.java&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, &lt;/span&gt;&lt;code style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;1296&quot; data-start=&quot;1276&quot;&gt;AddressMapper.java&lt;/code&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;MyBatis 기반으로 SQL 쿼리를 실행하고 DB와 연결.&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="641" width="360" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-7" value="&lt;div&gt;&lt;strong style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;669&quot; data-start=&quot;634&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/strong&gt;&lt;/div&gt;&lt;div&gt;&lt;strong style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;669&quot; data-start=&quot;634&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/strong&gt;&lt;/div&gt;&lt;div&gt;&lt;strong style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;669&quot; data-start=&quot;634&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/strong&gt;&lt;/div&gt;&lt;div&gt;&lt;strong style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;669&quot; data-start=&quot;634&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/strong&gt;&lt;/div&gt;&lt;div&gt;&lt;strong style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;669&quot; data-start=&quot;634&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;📂 src/main/resources/templates&lt;/font&gt;&lt;/strong&gt;&lt;/div&gt;&lt;div&gt;&lt;strong style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;669&quot; data-start=&quot;634&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/strong&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;code style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;685&quot; data-start=&quot;674&quot;&gt;join.html&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, &lt;/span&gt;&lt;code style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;698&quot; data-start=&quot;687&quot;&gt;list.html&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, &lt;/span&gt;&lt;code style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;715&quot; data-start=&quot;700&quot;&gt;userinfo.html&lt;/code&gt;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt; 등&lt;/font&gt;&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-family: Helvetica; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Thymeleaf 기반 HTML 뷰 파일&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-family: Helvetica; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;클라이언트에게 렌더링되는 페이지를 구성&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="161" width="360" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-8" value="&lt;h2 data-end=&quot;1120&quot; data-start=&quot;1082&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px; font-weight: normal;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/h2&gt;&lt;h2 data-end=&quot;1120&quot; data-start=&quot;1082&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px; font-weight: normal;&quot;&gt;📂 &lt;/span&gt;&lt;strong style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px;&quot; data-end=&quot;1402&quot; data-start=&quot;1353&quot;&gt;com.example.demo.vo&lt;/strong&gt;&lt;/h2&gt;&lt;code style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;1420&quot; data-start=&quot;1407&quot;&gt;UserVO.java&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, &lt;/span&gt;&lt;code style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;1436&quot; data-start=&quot;1422&quot;&gt;PhoneVO.java&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, &lt;/span&gt;&lt;code style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;1452&quot; data-start=&quot;1438&quot;&gt;EmailVO.java&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, &lt;/span&gt;&lt;code style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;1470&quot; data-start=&quot;1454&quot;&gt;AddressVO.java&lt;/code&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;사용자 및 관련 데이터를 표현하는 객체들&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;Controller와 Service 간의 데이터 전달을 담당.&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="641" width="360" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-9" value="&lt;h2 data-end=&quot;1120&quot; data-start=&quot;1082&quot;&gt;&lt;br&gt;&lt;/h2&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;h2 data-end=&quot;1120&quot; data-start=&quot;1082&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px; font-weight: normal;&quot;&gt;MySQL을 사용하여 데이터를 저장 및 관리&lt;/span&gt;&lt;/h2&gt;&lt;h2 style=&quot;margin-top: 10.94px;&quot; data-end=&quot;1120&quot; data-start=&quot;1082&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px; font-weight: normal;&quot;&gt;application.properties :&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px; font-weight: normal;&quot;&gt;데이터베이스 연결 및 MyBatis 설정.&lt;/span&gt;&lt;/h2&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;shadow=1;glass=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="881" width="720" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-10" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Presentation Layer&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;gradientColor=#ea6b66;" vertex="1" parent="1">
+          <mxGeometry x="40" y="161" width="720" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-11" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Business Layer&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="401" width="720" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-12" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Persistance Layer&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;gradientColor=#7ea6e0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="641" width="720" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-13" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Data Storage&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;gradientColor=#97d077;glass=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="881" width="720" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-14" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;textShadow=1;shadow=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="321" as="sourcePoint" />
+            <mxPoint x="300.00000000000045" y="401" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-15" value="UserController에서 요청 데이터를 검증하여&amp;nbsp;&lt;div&gt;UserService에 전달&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBorderColor=default;textShadow=1;" vertex="1" connectable="0" parent="AO8RqB7qXllmJAtHtq3s-14">
+          <mxGeometry x="-0.225" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-16" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;textShadow=1;shadow=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="298.5" y="561" as="sourcePoint" />
+            <mxPoint x="298.5" y="641" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-17" value="UserService가 필요한 비즈니스 로직 수행&lt;br&gt;UserMapper를 통해 DB 접근" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBorderColor=default;textShadow=1;" vertex="1" connectable="0" parent="AO8RqB7qXllmJAtHtq3s-16">
+          <mxGeometry x="-0.225" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-18" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;textShadow=1;shadow=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="801" as="sourcePoint" />
+            <mxPoint x="360" y="881" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-19" value="UserMapper가 MyBatis를 이용해 DB에서 데이터를 저장 또는 조회" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBorderColor=default;textShadow=1;" vertex="1" connectable="0" parent="AO8RqB7qXllmJAtHtq3s-18">
+          <mxGeometry x="-0.225" y="-3" relative="1" as="geometry">
+            <mxPoint x="43" y="9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-21" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;shadow=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="480" y="641" as="sourcePoint" />
+            <mxPoint x="480" y="561" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-22" value="UserMapper가 받은 데이터를&lt;br&gt;UserService로 반환" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBorderColor=default;textShadow=1;" vertex="1" connectable="0" parent="AO8RqB7qXllmJAtHtq3s-21">
+          <mxGeometry y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-23" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;shadow=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="480.5" y="401" as="sourcePoint" />
+            <mxPoint x="480.5" y="321" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-24" value="받은 데이터를 DTO 형태로&lt;br&gt;UserController로 전달" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBorderColor=default;textShadow=1;" vertex="1" connectable="0" parent="AO8RqB7qXllmJAtHtq3s-23">
+          <mxGeometry y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-25" value="사용자" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="385" y="20" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-29" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="AO8RqB7qXllmJAtHtq3s-27">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="390" as="sourcePoint" />
+            <mxPoint x="358" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AO8RqB7qXllmJAtHtq3s-31" value="" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="AO8RqB7qXllmJAtHtq3s-27">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="442" y="160" as="sourcePoint" />
+            <mxPoint x="440" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -158,6 +158,15 @@
 			display: flex;
 			gap: 20px; /* 간격 조정 */
 		}
+/* 		.profile-img { */
+/*         display: block; */
+/*         width: 100px; */
+/*         height: 100px; */
+/*         object-fit: cover; */
+/*         background-image: url([[@{/img/user-default.png}]]); */
+/*         background-size: cover; */
+/*         } */
+		
 	</style>
 </head>
 <body>
@@ -169,7 +178,7 @@
 					<th>이름</th>
 					<td><input type="text" name="name" th:value="${user.name}" disabled></td>
 					<td rowspan="3">
-						<img id="profileImage" th:src="${user.img != null ? '/uploads/' + user.img : '/img/user-default.png'}" alt="프로필 사진"
+						<img id="profileImage" class="profile-img" th:src="|${user.img != null ? '/uploads/' + user.img : '@{/img/user-default.png}'}|" onerror="this.onerror=null; this.src='/img/user-default.png';" alt="프로필 사진"
 							 onclick="document.getElementById('fileInput').click()">
 						<input type="file" id="fileInput" style="display: none;" name="img" accept="image/*" onchange="previewImage(event)" disabled>
 					</td>
